@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Text, TextInput, View, StyleSheet } from "react-native";
 
 const HeartRate = () => {
-  const [number, setNumber] = useState('');
+  const [number, setNumber] = useState<string>('');
 
-  const age = Number(number);
-  const isValidAge = age >= 1 && age <= 110 && /^[0-9]*$/.test(number);
-  const minHeartRate = isValidAge ? Math.round((220 - age) * 0.65) : 0;
-  const maxHeartRate = isValidAge ? Math.round((220 - age) * 0.85) : 0;
+  const age: number = Number(number);
+  const isValidAge: boolean = age >= 1 && age <= 110 && /^[0-9]*$/.test(number);
+  const minHeartRate: number = isValidAge ? Math.round((220 - age) * 0.65) : 0;
+  const maxHeartRate: number = isValidAge ? Math.round((220 - age) * 0.85) : 0;
 
   return (
     <View style={styles.container}>
