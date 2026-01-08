@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, StyleSheet } from "react-native";
 
-const HeartRate = () => {
+const HeartRate: React.FC = () => {
   const [number, setNumber] = useState<string>('');
 
   const age: number = Number(number);
@@ -16,7 +16,7 @@ const HeartRate = () => {
 
       <TextInput
         style={styles.input}
-        onChangeText={setNumber}
+        onChangeText={(text: string) => setNumber(text)}
         value={number}
         placeholder="age"
         placeholderTextColor={'grey'}
