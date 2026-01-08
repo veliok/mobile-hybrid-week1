@@ -5,37 +5,32 @@ const HeartRate = () => {
 	const [number, setNumber] = useState('');
 
 	const age = Number(number);
-	const isValidAge = age >= 0 && age <= 110 && /^[0-9]*$/.test(number);
-	const minHeartRate = isValidAge ? Math.round((220 - age) * 0.65) : null;
-	const maxHeartRate = isValidAge ? Math.round((220 - age) * 0.85) : null;
+	const isValidAge = age >= 1 && age <= 110 && /^[0-9]*$/.test(number);
+	const minHeartRate = isValidAge ? Math.round((220 - age) * 0.65) : 0;
+	const maxHeartRate = isValidAge ? Math.round((220 - age) * 0.85) : 0;
 
 	return (
 		<View style={styles.container}>
 			<Text style={styles.header}>Heart Rate Limits Calculator</Text>
 			<Text style={styles.label}>Enter your age:</Text>
 
-			<TextInput 
+			<TextInput
 				style={styles.input}
 				onChangeText={setNumber}
 				value={number}
 				placeholder="age"
+				placeholderTextColor={'gray'}
 				keyboardType="numeric"
 				maxLength={3}
 			/>
 
+			<Text style={styles.result}>Lower limit: {minHeartRate} bpm</Text>
+			<Text style={styles.result}>Upper limit: {maxHeartRate} bpm</Text>
+
 			{!isValidAge && number !== "" && (
 				<>
-        <Text style={styles.result}>Lower limit: 0 bpm</Text>
-				<Text style={styles.result}>Lower limit: 0 bpm</Text>
-				<Text style={styles.error}>Invalid input</Text>
+					<Text style={styles.error}>Invalid input</Text>
 				</>
-      )}
-
-			{minHeartRate !== null && (
-				<Text style={styles.result}>Lower limit: {minHeartRate} bpm</Text>
-			)}
-			{maxHeartRate !== null && (
-				<Text style={styles.result}>Lower limit: {maxHeartRate} bpm</Text>
 			)}
 		</View>
 	);
@@ -62,6 +57,7 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		textAlign: 'center',
 		minWidth: 100,
+		height: 30,
 		marginBottom: 20
 	},
 	result: {

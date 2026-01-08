@@ -5,7 +5,7 @@ import HeartRate from './components/HeartRate';
 export default function App() {
   return (
     <View style={styles.container}>
-      <HeartRate/>
+      <HeartRate />
       <StatusBar style="auto" />
     </View>
   );
